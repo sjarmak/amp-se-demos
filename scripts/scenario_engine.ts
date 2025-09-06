@@ -131,6 +131,10 @@ export async function validateScenarios(): Promise<boolean> {
   return ok;
 }
 
+function slugify(s: string): string {
+  return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
 export async function renderPlaybooks(outDir?: string): Promise<void> {
   const outputDir = path.resolve(process.cwd(), outDir || GENERATED_DIR);
   await fs.ensureDir(outputDir);
@@ -158,13 +162,30 @@ async function runTool(tool: string, args: string[] = []) {
   const cfg = await loadToolboxConfig();
   const entry = cfg.find(t => t.name === tool);
   if (!entry) throw new Error(`Tool not registered: ${tool}`);
-  // naive split of command string
   const parts = entry.command.split(' ');
   const cmd = parts[0];
   const cmdArgs = parts.slice(1).concat(args);
   await new Promise<void>((resolve, reject) => {
     const p = spawn(cmd, cmdArgs, { stdio: 'inherit' });
     p.on('exit', (code) => code === 0 ? resolve() : reject(new Error(`${tool} exited ${code}`)));
+    p.on('error', reject);
+  });
+}
+
+async function captureTool(tool: string, args: string[] = []): Promise<string> {
+  const cfg = await loadToolboxConfig();
+  const entry = cfg.find(t => t.name === tool);
+  if (!entry) throw new Error(`Tool not registered: ${tool}`);
+  const parts = entry.command.split(' ');
+  const cmd = parts[0];
+  const cmdArgs = parts.slice(1).concat(args);
+  return await new Promise<string>((resolve, reject) => {
+    const p = spawn(cmd, cmdArgs, { stdio: ['ignore', 'pipe', 'pipe'] });
+    let out = '';
+    let err = '';
+    p.stdout.on('data', d => out += d.toString());
+    p.stderr.on('data', d => err += d.toString());
+    p.on('exit', (code) => code === 0 ? resolve(out) : reject(new Error(err || `${tool} exited ${code}`)));
     p.on('error', reject);
   });
 }
@@ -205,6 +226,61 @@ export async function runScenario(scenarioId: string): Promise<void> {
   console.log(chalk.green(`Executed scenario: ${scenario.id}`));
 }
 
+async function generateScenarioFromSF(accountName: string, templateId: string | undefined, outDir: string) {
+  // 1) fetch SF data
+  const jsonStr = await captureTool('sf_fetch', ['--name', accountName]);
+  const data = JSON.parse(jsonStr);
+  const industry: string = data?.account?.Industry || '';
+  // 2) pick template
+  let chosen = templateId;
+  if (!chosen) {
+    const mappingPath = path.resolve(process.cwd(), 'config/scenario_mapping.yml');
+    let mapping = { verticals: { default: { template: 'generic/node-unit-tests' } } } as any;
+    if (await fs.pathExists(mappingPath)) {
+      const raw = await fs.readFile(mappingPath, 'utf8');
+      mapping = YAML.parse(raw);
+    }
+    const verts = mapping.verticals || {};
+    chosen = (Object.keys(verts).find(v => (verts[v].industry_terms||[]).includes(industry)) && Object.keys(verts).find(v => (verts[v].industry_terms||[]).includes(industry)) !== 'default')
+      ? verts[Object.keys(verts).find(v => (verts[v].industry_terms||[]).includes(industry))].template
+      : (verts.default?.template || 'generic/node-unit-tests');
+  }
+  // 3) render template YAML & talk track
+  const [vert, scen] = chosen.split('/');
+  const tplPath = path.resolve(process.cwd(), 'projects/_templates', vert, `${scen}.template.yml`);
+  const talkTplPath = path.resolve(process.cwd(), 'projects/_templates', vert, 'talktracks', `${scen}.md.hbs`);
+  const yamlTpl = await fs.readFile(tplPath, 'utf8');
+  const mdTpl = await fs.readFile(talkTplPath, 'utf8');
+  const h = Handlebars.create();
+  const scenarioId = `${slugify(scen)}-${slugify(data.account?.Name||'acct')}`;
+  const projectSlug = slugify(`${data.account?.Name||'acct'}-demo`);
+  const opps = data.opportunities || [];
+  const biggestOpp = opps.reduce((a: any, b: any) => (a && a.Amount > b.Amount ? a : b), opps[0] || {});
+  const ctx = {
+    account: data.account || {},
+    contacts: data.contacts || [],
+    opportunities: opps,
+    tasks: data.tasks || [],
+    industry,
+    opportunityCount: opps.length,
+    biggestOpp,
+    primaryContact: (data.contacts||[])[0] || {},
+    secondaryContact: (data.contacts||[])[1] || null,
+    scenarioId,
+    projectSlug
+  };
+  const scenarioYaml = h.compile(yamlTpl)(ctx);
+  const talkMd = h.compile(mdTpl)(ctx);
+  const outProjectDir = path.resolve(process.cwd(), outDir, projectSlug);
+  await fs.ensureDir(path.join(outProjectDir, 'talktracks'));
+  await fs.writeFile(path.join(outProjectDir, 'scenario.yml'), scenarioYaml, 'utf8');
+  await fs.writeFile(path.join(outProjectDir, 'talktracks', `${scenarioId}.md`), talkMd, 'utf8');
+  console.log(chalk.green(`Generated scenario at ${path.relative(process.cwd(), outProjectDir)}`));
+  // 4) validate & render
+  const ok = await validateScenarios();
+  if (ok) await renderPlaybooks();
+}
+
 async function main() {
   const program = new Command('scenario');
   program
@@ -239,6 +315,21 @@ async function main() {
     .action(async (name: string, opts: { out?: string }) => {
       try {
         await runTool('intel_enrich', opts.out ? [name, opts.out] : [name]);
+      } catch (e: any) {
+        console.error(chalk.red(e.message));
+        process.exit(1);
+      }
+    });
+
+  program
+    .command('generate-sf')
+    .description('Generate a customised scenario from Salesforce data')
+    .argument('<accountName>', 'Account name to look up in Salesforce')
+    .option('-t, --template <id>', 'Template override, e.g. fintech/api-testing')
+    .option('-o, --out-dir <dir>', 'Output directory under projects/', 'projects')
+    .action(async (name: string, opts: { template?: string; outDir: string }) => {
+      try {
+        await generateScenarioFromSF(name, opts.template, opts.outDir);
       } catch (e: any) {
         console.error(chalk.red(e.message));
         process.exit(1);

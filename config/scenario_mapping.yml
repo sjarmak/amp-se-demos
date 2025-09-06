@@ -1,0 +1,9 @@
+verticals:
+  fintech:
+    industry_terms: ["Financial Services", "Banking", "FinTech", "Capital Markets", "Insurance"]
+    template: "fintech/api-testing"
+  healthcare:
+    industry_terms: ["Healthcare", "Health Care", "Biotech", "Pharmaceuticals"]
+    template: "healthcare/hipaa-testing"
+  default:
+    template: "generic/node-unit-tests"

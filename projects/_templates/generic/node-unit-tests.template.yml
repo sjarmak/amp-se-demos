@@ -1,0 +1,27 @@
+id: {{scenarioId}}
+template_source: generic/node-unit-tests
+project: {{projectSlug}}
+title: Auto-generate unit tests for {{account.Name}} services
+level: quick-win
+problem_statement: >
+  {{account.Name}} needs faster test creation to reduce regressions and speed up delivery.
+solution_summary: >
+  Use Amp to scaffold Jest tests and lift coverage by 20%.
+flow:
+  - step: discover_services
+    description: Search src/ for core services
+  - step: generate_tests
+    description: Generate unit tests with edge cases
+  - step: run_coverage
+    description: npm test -- --coverage
+value_proof:
+  metrics:
+    - name: coverage_delta
+      target: ">=0.20"
+talk_track: talktracks/{{scenarioId}}.md
+toolbox: [http_request, git_ops]
+estimated_duration_min: 7
+data_sources:
+  salesforce:
+    accountId: {{account.Id}}
+tags: [generic, unit-tests]

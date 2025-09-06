@@ -10,6 +10,20 @@
     "title": { "type": "string", "minLength": 1 },
     "level": { "type": "string", "enum": ["quick-win", "core", "deep-dive"] },
     "project": { "type": "string", "minLength": 1 },
+    "template_source": { "type": "string" },
+    "placeholders": { "type": "object", "additionalProperties": { "type": "string" } },
+    "data_sources": {
+      "type": "object",
+      "properties": {
+        "salesforce": {
+          "type": "object",
+          "properties": { "accountId": { "type": "string" } },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "tags": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
     "prerequisites": {
       "type": "array",
       "items": { "type": "string" }

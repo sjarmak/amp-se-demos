@@ -1,0 +1,36 @@
+id: {{scenarioId}}
+template_source: fintech/api-testing
+project: {{projectSlug}}
+title: Auto-generate compliance-ready API tests for {{account.Name}}
+level: core
+prerequisites:
+  - Node 20 LTS
+  - PostgreSQL
+problem_statement: >
+  {{account.Name}} operates in {{account.Industry}} where compliance and release speed are critical.
+  Manual API testing for trading endpoints creates bottlenecks and audit risk.
+solution_summary: >
+  Use Amp to auto-generate Jest API tests with compliance assertions, lift coverage to >=90%,
+  and integrate gates into CI to reduce release cycle time by 50%.
+flow:
+  - step: audit_existing_apis
+    description: Scan src/routes/ for trading API endpoints
+  - step: generate_compliance_tests
+    description: Generate Jest tests with regulatory validation
+  - step: run_coverage_report
+    description: npm test -- --coverage
+value_proof:
+  metrics:
+    - name: test_coverage_percentage
+      target: ">=0.90"
+    - name: api_endpoints_tested
+      target: ">=15"
+    - name: time_saved_hours
+      target: ">=40"
+talk_track: talktracks/{{scenarioId}}.md
+toolbox: [http_request, git_ops, psql_migrate]
+estimated_duration_min: 12
+data_sources:
+  salesforce:
+    accountId: {{account.Id}}
+tags: [fintech, api, testing]
