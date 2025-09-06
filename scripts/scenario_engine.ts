@@ -31,7 +31,7 @@ export type Scenario = {
   prerequisites?: string[];
   problem_statement?: string;
   solution_summary?: string;
-  flow: Array<{ step: string; description: string }>;
+  flow: Array<{ step: string; description: string; tool?: string; args?: string[] }>;
   value_proof: { metrics: Array<{ name: string; target: unknown }> };
   talk_track?: string;
   toolbox?: string[];
@@ -60,18 +60,20 @@ async function loadAllScenarios(): Promise<{ file: string; scenario: Scenario }[
   return items;
 }
 
-async function loadToolboxRegistry(): Promise<Set<string>> {
+type ToolboxEntry = { name: string; command: string };
+async function loadToolboxConfig(): Promise<ToolboxEntry[]> {
   try {
     const raw = await fs.readFile(TOOLBOX_CONFIG, 'utf8');
     const parsed = JSON.parse(raw);
-    const names = new Set<string>();
-    for (const t of parsed.tools ?? []) {
-      if (t && typeof t.name === 'string') names.add(t.name);
-    }
-    return names;
+    return (parsed.tools ?? []) as ToolboxEntry[];
   } catch (e) {
-    return new Set<string>();
+    return [];
   }
+}
+
+async function loadToolboxRegistry(): Promise<Set<string>> {
+  const cfg = await loadToolboxConfig();
+  return new Set(cfg.map(t => t.name));
 }
 
 export async function validateScenarios(): Promise<boolean> {
@@ -150,6 +152,23 @@ async function appendTelemetry(scenarioId: string, record: Record<string, unknow
   await fs.appendFile(tPath, JSON.stringify(record) + '\n', 'utf8');
 }
 
+import { spawn } from 'child_process';
+
+async function runTool(tool: string, args: string[] = []) {
+  const cfg = await loadToolboxConfig();
+  const entry = cfg.find(t => t.name === tool);
+  if (!entry) throw new Error(`Tool not registered: ${tool}`);
+  // naive split of command string
+  const parts = entry.command.split(' ');
+  const cmd = parts[0];
+  const cmdArgs = parts.slice(1).concat(args);
+  await new Promise<void>((resolve, reject) => {
+    const p = spawn(cmd, cmdArgs, { stdio: 'inherit' });
+    p.on('exit', (code) => code === 0 ? resolve() : reject(new Error(`${tool} exited ${code}`)));
+    p.on('error', reject);
+  });
+}
+
 export async function runScenario(scenarioId: string): Promise<void> {
   const entries = await loadAllScenarios();
   const item = entries.find((e) => e.scenario.id === scenarioId);
@@ -164,8 +183,17 @@ export async function runScenario(scenarioId: string): Promise<void> {
   for (const step of scenario.flow) {
     const start = Date.now();
     await appendTelemetry(scenario.id, { ts: now(), event: 'step_start', step: step.step });
-    // Stub executor: simulate work
-    await new Promise((r) => setTimeout(r, 10));
+    if (step.tool) {
+      try {
+        await runTool(step.tool, step.args);
+      } catch (e: any) {
+        console.error(chalk.red(`Tool step failed (${step.tool}): ${e.message}`));
+        process.exitCode = 1;
+      }
+    } else {
+      // Stub executor: simulate work
+      await new Promise((r) => setTimeout(r, 10));
+    }
     await appendTelemetry(scenario.id, {
       ts: now(),
       event: 'step_end',
@@ -197,10 +225,24 @@ async function main() {
 
   program
     .command('run')
-    .description('Execute a scenario by id (stub)')
+    .description('Execute a scenario by id (runs registered tool steps)')
     .argument('<scenarioId>', 'Scenario id')
     .action(async (id: string) => {
       await runScenario(id);
+    });
+
+  program
+    .command('enrich')
+    .description('Run customer intelligence enrichment tool')
+    .argument('<accountName>', 'Customer or account name')
+    .option('-o, --out <file>', 'Output markdown path')
+    .action(async (name: string, opts: { out?: string }) => {
+      try {
+        await runTool('intel_enrich', opts.out ? [name, opts.out] : [name]);
+      } catch (e: any) {
+        console.error(chalk.red(e.message));
+        process.exit(1);
+      }
     });
 
   await program.parseAsync(process.argv);

@@ -166,6 +166,12 @@ npm run scenario:render   # Generates customer playbook
 
 ### Step 5: Execute Demo
 
+**Enrich customer intelligence (optional):**
+```bash
+# Requires: intel_enrich tool (registered) and optional env: SF_INSTANCE_URL, SF_ACCESS_TOKEN, GITHUB_TOKEN
+npm run scenario -- enrich "TradeFast Solutions" -o docs/generated/research/tradefast.md
+```
+
 **During customer call:**
 ```bash
 npm run scenario:run tradefast-api-testing

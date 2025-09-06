@@ -34,7 +34,9 @@ Key files:
 Commands:
 - Validate all scenarios: `npm run scenario:validate`
 - Render playbooks to docs/generated/: `npm run scenario:render`
-- Run a scenario (stub executor): `npm run scenario:run node-cart-autotest`
+- Run a scenario: `npm run scenario:run node-cart-autotest`
+- Enrich customer intel: `npm run scenario -- enrich "Acme Corp" -o docs/generated/research/acme.md`
+  - Optional env: SF_INSTANCE_URL, SF_ACCESS_TOKEN, GITHUB_TOKEN
 
 Authoring:
 - Create projects/<project>/scenario.yml (conforms to schema) and talktracks under projects/<project>/talktracks/.

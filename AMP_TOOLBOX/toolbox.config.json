@@ -4,6 +4,7 @@
     {"name": "git_ops", "command": "bash AMP_TOOLBOX/tools/git_ops_tool.sh"},
     {"name": "psql_migrate", "command": "python AMP_TOOLBOX/tools/psql_migrate_tool.py"},
     {"name": "screenshot", "command": "python AMP_TOOLBOX/tools/screenshot_tool.py"},
-    {"name": "search_in_repo", "command": "python AMP_TOOLBOX/tools/search_in_repo_tool.py"}
+    {"name": "search_in_repo", "command": "python AMP_TOOLBOX/tools/search_in_repo_tool.py"},
+    {"name": "intel_enrich", "command": "node AMP_TOOLBOX/tools/intel_enrich.mjs"}
   ]
 }
