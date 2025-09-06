@@ -1,0 +1,7 @@
+@startuml
+actor User
+User -> API: POST /checkout
+API -> DB: INSERT order
+DB --> API: order_id
+API --> User: 201 {order_id}
+@enduml

@@ -1,0 +1,38 @@
+# Node
+node_modules/
+coverage/
+
+# Python
+.venv/
+__pycache__/
+.pytest_cache/
+
+# Java
+.target/
+target/
+.mvn/
+
+# Go
+bin/
+
+# DotNet
+bin/
+obj/
+
+# Next.js
+.next/
+.playwright/
+
+# macOS
+.DS_Store
+
+# Terraform
+.terraform/
+terraform.tfstate*
+
+# Logs
+*.log
+
+# Misc
+.env
+.env.*

@@ -1,0 +1,7 @@
+@startuml
+actor Demo
+Demo -> Service: throttled_fetch()
+Service -> External: request()
+External --> Service: response
+Service --> Demo: data
+@enduml

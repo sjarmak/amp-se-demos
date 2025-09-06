@@ -1,0 +1,11 @@
+@startuml
+class TradingEngine {
+  +addOrder(symbol, side, qty, price)
+  +matchOrders(symbol)
+}
+class OrderBook {
+  +addBid(price, qty)
+  +addAsk(price, qty)
+}
+TradingEngine --> OrderBook
+@enduml

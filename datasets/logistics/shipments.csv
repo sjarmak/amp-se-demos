@@ -1,0 +1,3 @@
+id,route_id,carrier_id,status,created_at
+700,1,10,IN_TRANSIT,2025-01-03T10:00:00Z
+701,2,11,DELAYED,2025-01-04T10:00:00Z

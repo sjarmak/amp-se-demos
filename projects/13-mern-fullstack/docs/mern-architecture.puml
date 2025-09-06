@@ -1,0 +1,19 @@
+@startuml
+package "Client (React)" {
+  [App Component]
+  [TaskList Component]
+}
+
+package "Server (Express)" {
+  [API Routes]
+  [Middleware]
+}
+
+package "Database" {
+  [MongoDB]
+}
+
+[App Component] --> [API Routes] : HTTP/Axios
+[TaskList Component] --> [API Routes] : HTTP/Axios
+[API Routes] --> [MongoDB] : Mongoose
+@enduml

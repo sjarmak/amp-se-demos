@@ -1,0 +1,2 @@
+id,customer_id,balance_cents,status
+500,1000,100000,ACTIVE

@@ -1,0 +1,3 @@
+id,account_id,amount_cents,type,created_at
+9001,500,1250,DEBIT,2025-01-01T00:00:00Z
+9002,500,3000,CREDIT,2025-01-02T00:00:00Z

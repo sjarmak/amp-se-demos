@@ -1,0 +1,8 @@
+@startuml
+!theme plain
+
+package "01-node-express-ecommerce" {
+  [API Server] --> (Postgres)
+  [API Server] --> [External API]
+}
+@enduml

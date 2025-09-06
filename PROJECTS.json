@@ -1,0 +1,86 @@
+[
+  {
+    "id": "01-node-express-ecommerce",
+    "stack": ["Node", "Express", "Jest", "Postgres"],
+    "datasets": ["ecommerce/products.csv", "ecommerce/orders.csv", "ecommerce/users.csv"],
+    "capabilities": ["unit-tests", "diagramming", "code-explanations", "toolbox", "alloy-mode", "large-context", "end-to-end"],
+    "demo_flows": [
+      {"name": "Quick Win: Auto-tests for cart service", "duration_min": 7},
+      {"name": "Core: Throttle to 200ms + tests + PR", "duration_min": 18},
+      {"name": "Deep: Refactor checkout + diagrams + alloy mode", "duration_min": 30}
+    ]
+  },
+  {
+    "id": "02-python-fastapi-logistics",
+    "stack": ["Python", "FastAPI", "PyTest", "SQLAlchemy", "Postgres"],
+    "datasets": ["logistics/shipments.csv", "logistics/routes.csv", "logistics/carriers.csv"],
+    "capabilities": ["unit-tests", "diagramming", "toolbox", "large-context", "end-to-end", "alloy-mode"],
+    "demo_flows": [
+      {"name": "Quick Win: Create tests for rate limiter", "duration_min": 6},
+      {"name": "Core: 200ms throttle + integration test", "duration_min": 20},
+      {"name": "Deep: Background task + diagrams + PR", "duration_min": 28}
+    ]
+  },
+  {
+    "id": "03-java-springboot-fintech",
+    "stack": ["Java", "Spring Boot", "JUnit", "Liquibase", "Postgres"],
+    "datasets": ["fintech/transactions.csv", "fintech/accounts.csv", "fintech/customers.csv"],
+    "capabilities": ["unit-tests", "diagramming", "toolbox", "large-context", "end-to-end", "alloy-mode"],
+    "demo_flows": [
+      {"name": "Quick Win: Service tests for fee calc", "duration_min": 8},
+      {"name": "Core: 200ms throttle + Liquibase + PR", "duration_min": 22},
+      {"name": "Deep: Refactor service layer + diagrams", "duration_min": 32}
+    ]
+  },
+  {"id": "04-go-gin-media", "stack": ["Go", "Gin", "SQLite"], "datasets": ["media/articles.json", "media/events.json"], "capabilities": ["diagramming", "tests", "toolbox"], "demo_flows": [{"name": "Quick Win: Handler test", "duration_min": 6}]},
+  {"id": "05-dotnet-webapi-health", "stack": [".NET 8", "xUnit", "EF Core", "Postgres"], "datasets": ["health/patients.csv"], "capabilities": ["tests", "diagramming"], "demo_flows": [{"name": "Core: Add endpoint + tests", "duration_min": 18}]},
+  {"id": "06-react-nextjs-ui", "stack": ["Next.js", "Playwright"], "datasets": [], "capabilities": ["ui", "screenshots", "toolbox"], "demo_flows": [{"name": "Quick Win: UI tweak + screenshot", "duration_min": 7}]},
+  {"id": "07-legacy-php-laravel-monolith", "stack": ["PHP", "Laravel"], "datasets": [], "capabilities": ["decomposition", "tests", "diagramming"], "demo_flows": [{"name": "Deep: Extract module", "duration_min": 30}]},
+  {"id": "08-ruby-on-rails-auth-headers", "stack": ["Ruby", "Rails", "RSpec"], "datasets": [], "capabilities": ["search", "diagramming"], "demo_flows": [{"name": "Core: Auth headers analysis", "duration_min": 18}]},
+  {"id": "09-sveltekit-dashboard", "stack": ["SvelteKit", "Vite"], "datasets": [], "capabilities": ["ui", "screenshots"], "demo_flows": [{"name": "Core: Responsive dashboard", "duration_min": 16}]},
+  {"id": "10-infra-iac-terraform", "stack": ["Terraform", "OPA"], "datasets": [], "capabilities": ["iac", "policy"], "demo_flows": [{"name": "Core: Policy tests", "duration_min": 15}]},
+  {
+    "id": "11-cpp-trading-sim",
+    "stack": ["C++", "CMake", "Google Test"],
+    "datasets": ["trading/ticks.csv", "trading/orders.csv"],
+    "capabilities": ["performance", "memory-management", "low-latency", "benchmarking"],
+    "demo_flows": [
+      {"name": "Quick Win: Optimize order matching loop", "duration_min": 8},
+      {"name": "Core: Memory pool for order objects", "duration_min": 22},
+      {"name": "Deep: Latency measurement and optimization", "duration_min": 35}
+    ]
+  },
+  {
+    "id": "12-rust-axum-infra",
+    "stack": ["Rust", "Axum", "Tokio", "Criterion"],
+    "datasets": ["infrastructure/nodes.csv"],
+    "capabilities": ["async-programming", "performance", "memory-safety", "benchmarking"],
+    "demo_flows": [
+      {"name": "Quick Win: Add metrics endpoint with Prometheus format", "duration_min": 6},
+      {"name": "Core: Async background task for health checks", "duration_min": 18},
+      {"name": "Deep: Performance optimization and memory profiling", "duration_min": 28}
+    ]
+  },
+  {
+    "id": "13-mern-fullstack",
+    "stack": ["MongoDB", "Express", "React", "Node.js"],
+    "datasets": [],
+    "capabilities": ["fullstack-js", "react-hooks", "mongodb", "websockets", "ui"],
+    "demo_flows": [
+      {"name": "Quick Win: Add React component with API integration", "duration_min": 7},
+      {"name": "Core: Full CRUD operations with MongoDB", "duration_min": 20},
+      {"name": "Deep: Real-time updates with WebSockets", "duration_min": 32}
+    ]
+  },
+  {
+    "id": "14-lamp-php-mysql",
+    "stack": ["PHP", "Apache", "MySQL", "PHPUnit"],
+    "datasets": [],
+    "capabilities": ["mvc-pattern", "authentication", "security", "performance", "caching"],
+    "demo_flows": [
+      {"name": "Quick Win: Create MVC structure for user management", "duration_min": 8},
+      {"name": "Core: Add authentication and session management", "duration_min": 25},
+      {"name": "Deep: Performance optimization and caching", "duration_min": 30}
+    ]
+  }
+]

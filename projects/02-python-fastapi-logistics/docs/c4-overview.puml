@@ -1,0 +1,6 @@
+@startuml
+!theme plain
+package "02-python-fastapi-logistics" {
+  [FastAPI] --> (Postgres)
+}
+@enduml

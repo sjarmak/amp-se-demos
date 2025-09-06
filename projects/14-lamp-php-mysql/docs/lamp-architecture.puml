@@ -1,0 +1,15 @@
+@startuml
+package "LAMP Stack" {
+  [Apache Web Server] as Apache
+  [PHP Engine] as PHP
+  [MySQL Database] as MySQL
+}
+
+actor Browser
+Browser --> Apache : HTTP Request
+Apache --> PHP : Process PHP
+PHP --> MySQL : SQL Query
+MySQL --> PHP : Result Set
+PHP --> Apache : HTML Response
+Apache --> Browser : HTTP Response
+@enduml

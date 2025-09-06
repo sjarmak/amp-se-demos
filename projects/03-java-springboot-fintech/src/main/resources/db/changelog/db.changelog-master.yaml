@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0001-init
+      author: amp
+      changes:
+        - createTable:
+            tableName: accounts
+            columns:
+              - column: {name: id, type: INT, constraints: {primaryKey: true}}
+              - column: {name: customer_id, type: INT}
+              - column: {name: balance_cents, type: INT}
+              - column: {name: status, type: VARCHAR(32)}
+        - createTable:
+            tableName: transactions
+            columns:
+              - column: {name: id, type: INT, constraints: {primaryKey: true}}
+              - column: {name: account_id, type: INT}
+              - column: {name: amount_cents, type: INT}
+              - column: {name: type, type: VARCHAR(16)}
+              - column: {name: created_at, type: TIMESTAMPTZ}

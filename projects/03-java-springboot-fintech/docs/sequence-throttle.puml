@@ -1,0 +1,7 @@
+@startuml
+actor Demo
+Demo -> Service: throttledCall()
+Service -> External: request()
+External --> Service: response
+Service --> Demo: response
+@enduml

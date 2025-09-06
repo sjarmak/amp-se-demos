@@ -1,0 +1,4 @@
+[
+  {"id":1,"title":"Hello Media","tags":["news"],"published":true},
+  {"id":2,"title":"Gin and Go","tags":["tech"],"published":false}
+]

@@ -1,0 +1,13 @@
+@startuml
+actor Client
+participant "Axum Handler" as Handler
+participant "CSV Loader" as Loader
+participant "File System" as FS
+
+Client -> Handler: GET /nodes
+Handler -> Loader: load_nodes_from_csv()
+Loader -> FS: tokio::fs::read_to_string()
+FS --> Loader: content
+Loader --> Handler: Vec<Node>
+Handler --> Client: JSON response
+@enduml
