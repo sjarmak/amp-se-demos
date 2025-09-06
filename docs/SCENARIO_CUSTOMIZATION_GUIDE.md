@@ -172,6 +172,15 @@ npm run scenario:render   # Generates customer playbook
 npm run scenario -- enrich "TradeFast Solutions" -o docs/generated/research/tradefast.md
 ```
 
+**Auto-apply customization with Amp (-x):**
+```bash
+# Requires: amp CLI in PATH
+npm run scenario -- enrich "TradeFast Solutions" -o docs/generated/research/tradefast.md
+bash AMP_TOOLBOX/tools/amp_apply.sh \
+  "Customize scenario and talk track for TradeFast based on the context.\n- Update projects/tradefast-api-demo/scenario.yml fields (title, problem_statement, metrics).\n- Update talktracks/tradefast-api-testing.md with targeted roles and value props.\n- Keep schema valid and run npm run scenario:validate afterwards." \
+  docs/generated/research/tradefast.md
+```
+
 **During customer call:**
 ```bash
 npm run scenario:run tradefast-api-testing
