@@ -28,6 +28,7 @@ Key files:
 - Playbook template: docs/PLAYBOOK_TEMPLATES/playbook.md.hbs
 - CLI: scripts/scenario_engine.ts
 - Plan: docs/EXTENSIBILITY_PLAN.md
+- Customization guide: docs/SCENARIO_CUSTOMIZATION_GUIDE.md
 - Sample: projects/01-node-express-ecommerce/scenario.yml
 
 Commands:
