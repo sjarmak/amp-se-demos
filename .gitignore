@@ -36,3 +36,7 @@ terraform.tfstate*
 # Misc
 .env
 .env.*
+
+# Scenario Engine
+.telemetry/
+docs/generated/

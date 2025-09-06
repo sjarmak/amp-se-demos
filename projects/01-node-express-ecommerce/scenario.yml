@@ -1,0 +1,27 @@
+id: node-cart-autotest
+title: Auto-generate unit tests for cart service
+level: quick-win
+project: 01-node-express-ecommerce
+prerequisites:
+  - Node 20 LTS
+  - Postgres (env: DATABASE_URL_NODE)
+problem_statement: >
+  We need faster test creation for our cart logic to reduce regressions.
+solution_summary: >
+  Use Amp to scaffold Jest tests, achieve +20 % coverage, and validate in CI.
+flow:
+  - step: search_src
+    description: "Locate cart.js service"
+  - step: generate_tests
+    description: "Prompt Amp to create Jest tests"
+  - step: run_coverage
+    description: "npm test -- --coverage"
+value_proof:
+  metrics:
+    - name: coverage_delta
+      target: ">=0.20"
+    - name: tests_green
+      target: true
+talk_track: talktracks/node-cart-autotest.md
+toolbox: [http_request, git_ops]
+estimated_duration_min: 7

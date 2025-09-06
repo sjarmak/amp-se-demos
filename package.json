@@ -1,0 +1,29 @@
+{
+  "name": "amp-se-demos",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=20.9.0" },
+  "scripts": {
+    "scenario": "ts-node scripts/scenario_engine.ts",
+    "scenario:validate": "npm run scenario -- validate",
+    "scenario:render": "npm run scenario -- render",
+    "scenario:run": "npm run scenario -- run",
+    "scenario:ci": "npm run scenario:validate && npm test",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "11.0.1",
+    "@types/handlebars": "4.3.2",
+    "@types/node": "20.6.1",
+    "@types/yaml": "2.2.5",
+    "ajv": "8.12.0",
+    "chalk": "5.3.0",
+    "commander": "11.1.0",
+    "fs-extra": "11.1.1",
+    "glob": "10.3.10",
+    "handlebars": "4.7.8",
+    "ts-node": "10.9.2",
+    "typescript": "5.3.2",
+    "yaml": "2.3.2"
+  }
+}

@@ -23,3 +23,10 @@ Tooling
 Repo conventions
 - Root scripts orchestrate install/verify; project scripts implement dev/test/lint/ci
 - Datasets in datasets/ are used by Node, Python, and Java seeders
+
+## Scenario Engine & Toolbox Policy
+- Every scenario declares required tools in `toolbox`. Only tools registered in `AMP_TOOLBOX/toolbox.config.json` may be used.
+- Dependencies are pinned in root package.json; CI uses Node 20. Use `npm install` locally; prefer `npm ci` once lockfile exists.
+- Generated assets (docs/generated/, .telemetry/) are not committed; CI uploads playbooks as artifacts.
+- Author scenarios in `projects/*/scenario.yml`; validate via `npm run scenario:validate` before PRs.
+

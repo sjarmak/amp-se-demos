@@ -1,0 +1,19 @@
+# {{title}}
+
+|                |                                |
+|----------------|--------------------------------|
+| Duration       | {{estimated_duration_min}} min |
+| Project        | {{project}}                    |
+| Level          | {{level}}                      |
+| Problem        | {{problem_statement}}          |
+| Solution       | {{solution_summary}}           |
+
+## Step-by-step
+{{#each flow}}
+1. **{{step}}** – {{description}}
+{{/each}}
+
+## Value Proof
+{{#each value_proof.metrics}}
+- {{name}} → target **{{target}}**
+{{/each}}
