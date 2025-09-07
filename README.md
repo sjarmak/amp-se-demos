@@ -48,3 +48,20 @@ CI:
 
 Notes:
 - docs/generated/ and .telemetry/ are ignored by git.
+
+## Demo Customization System
+
+Tailor demos in minutes with a JSON profile.
+
+- Manual: docs/DEMO_CUSTOMIZATION_MANUAL.md
+- Prereqs: Node 18+, AMP_TOOLBOX on PATH
+  - Schema: config/customer_profile.schema.json
+  - Use-case mapping: config/use_case_mapping.json
+  - Example profiles: config/profiles/
+- Core commands:
+  - Copy/edit profile: `cp config/profiles/example_fintech.json my_target.json`
+  - Validate: `npx ajv -s config/customer_profile.schema.json -d my_target.json`
+  - Generate plan + talk track: `node AMP_TOOLBOX/tools/demo_customizer.mjs --file my_target.json --duration 20 --out /tmp/custom_demo.json`
+  - Optional SFDC-style enrich: `node AMP_TOOLBOX/tools/profile_loader.mjs --file my_target.json > /tmp/enriched.json`
+- Output: top-3 recommended projects with reasons, talk_track, and demo_flows; scoring considers use-cases, tech stack, audience, and duration.
+- Tips: pipe through jq (e.g., `jq '.talk_track' /tmp/custom_demo.json`); adjust use-cases and rerun for live re-scoring.
