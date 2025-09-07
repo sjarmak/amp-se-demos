@@ -1,0 +1,89 @@
+{
+  "company": {
+    "name": "SecureBank Corp",
+    "industry": "Financial Services", 
+    "size": "Enterprise (5000+)",
+    "website": "https://securebank.com",
+    "country": "United States",
+    "tech_stack": ["Java", "Spring Boot", ".NET", "Terraform", "PostgreSQL", "Kubernetes"]
+  },
+  "contacts": [
+    {
+      "name": "Elena Rodriguez",
+      "role": "CISO",
+      "department": "Security",
+      "email": "elena.rodriguez@securebank.com"
+    },
+    {
+      "name": "David Park", 
+      "role": "Principal Security Architect",
+      "department": "Security",
+      "email": "david.park@securebank.com"
+    },
+    {
+      "name": "Jennifer Wu",
+      "role": "DevSecOps Lead", 
+      "department": "Engineering",
+      "email": "jennifer.wu@securebank.com"
+    }
+  ],
+  "demo_context": {
+    "use_cases": [
+      "security_reviews",
+      "code_review_validation",
+      "debugging_investigation",
+      "context_restoration",
+      "thread_sharing"
+    ],
+    "audience_level": "manager",
+    "demo_duration": 30,
+    "pain_points": [
+      "Manual security code reviews create bottlenecks",
+      "Difficult to trace security vulnerabilities across microservices",
+      "Security team needs to review hundreds of PRs weekly",
+      "Incident response requires deep code analysis quickly",
+      "Compliance audit preparation is time-intensive"
+    ],
+    "success_metrics": [
+      "Reduced security review cycle time by 50%",
+      "Faster mean time to vulnerability resolution", 
+      "Improved security policy compliance",
+      "Better documentation for audit trails",
+      "Increased developer security awareness"
+    ]
+  },
+  "current_tools": {
+    "ide": ["IntelliJ", "VS Code"],
+    "version_control": "GitHub",
+    "ci_cd": ["GitHub Actions", "TeamCity"],
+    "monitoring": ["Splunk", "DataDog"],
+    "communication": ["Teams", "Slack"]
+  },
+  "recent_projects": [
+    {
+      "name": "Zero Trust Architecture Migration",
+      "description": "Migrating legacy systems to zero trust security model",
+      "stage": "development",
+      "tech_stack": ["Java", "Spring Boot", "Kubernetes", "Istio"]
+    },
+    {
+      "name": "PCI-DSS Compliance Upgrade", 
+      "description": "Upgrading payment processing to meet latest PCI-DSS requirements",
+      "stage": "testing",
+      "tech_stack": [".NET", "PostgreSQL", "Azure"]
+    }
+  ],
+  "security_requirements": {
+    "compliance": ["PCI-DSS", "SOC2", "ISO27001"],
+    "security_tools": ["Veracode", "SonarQube", "Snyk", "Checkmarx"],
+    "access_patterns": "hybrid"
+  },
+  "preferences": {
+    "show_diagnostics": true,
+    "include_security_scenarios": true,
+    "emphasize_collaboration": true,
+    "show_enterprise_features": true
+  },
+  "created_at": "2025-01-06T20:00:00Z",
+  "created_by": "security-sales@amp.com"
+}

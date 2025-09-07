@@ -1,0 +1,255 @@
+{
+  "use_cases": {
+    "context_restoration": {
+      "name": "Context restoration & codebase familiarization", 
+      "description": "Quickly regain context on old or unfamiliar code",
+      "best_projects": [
+        "07-legacy-php-laravel-monolith",
+        "08-ruby-on-rails-auth-headers", 
+        "01-node-express-ecommerce"
+      ],
+      "demo_flows": [
+        "git log analysis and branch summary",
+        "codebase exploration with natural language",
+        "automatic documentation generation"
+      ]
+    },
+    "toil_reduction": {
+      "name": "Toil reduction, code cleanup & refactoring",
+      "description": "Automating tedious follow-up changes after big refactors", 
+      "best_projects": [
+        "01-node-express-ecommerce",
+        "02-python-fastapi-logistics",
+        "07-legacy-php-laravel-monolith"
+      ],
+      "demo_flows": [
+        "automated test updates after API changes",
+        "type definition propagation",
+        "import/dependency cleanup"
+      ]
+    },
+    "debugging_investigation": {
+      "name": "Debugging, build fixing & issue investigation",
+      "description": "Investigate deploy issues and reduce large log output into actionable summaries",
+      "best_projects": [
+        "02-python-fastapi-logistics", 
+        "03-java-springboot-fintech",
+        "11-cpp-trading-sim"
+      ],
+      "demo_flows": [
+        "production log analysis with sub-agents", 
+        "build failure root cause analysis",
+        "performance bottleneck identification"
+      ]
+    },
+    "codebase_navigation": {
+      "name": "Search, navigate & understand the codebase",
+      "description": "Code becomes searchable and explorable with natural language",
+      "best_projects": [
+        "01-node-express-ecommerce",
+        "08-ruby-on-rails-auth-headers",
+        "13-mern-fullstack"
+      ],
+      "demo_flows": [
+        "semantic code search with context",
+        "finding configuration values",
+        "tracing data flow through functions"
+      ]
+    },
+    "bug_fixing_features": {
+      "name": "Bug fixing, feature building & PR creation",
+      "description": "Find bugs, fix them, and automatically create a PR",
+      "best_projects": [
+        "01-node-express-ecommerce",
+        "02-python-fastapi-logistics", 
+        "06-react-nextjs-ui"
+      ],
+      "demo_flows": [
+        "end-to-end bug fix with PR creation",
+        "automated test generation for fixes",
+        "regression test suite updates"
+      ]
+    },
+    "feature_building": {
+      "name": "Paint-by-numbers programming & feature extension", 
+      "description": "Guide Amp to build what you need, faster",
+      "best_projects": [
+        "01-node-express-ecommerce",
+        "13-mern-fullstack",
+        "02-python-fastapi-logistics"
+      ],
+      "demo_flows": [
+        "API endpoint creation with tests",
+        "database schema and migrations", 
+        "frontend component implementation"
+      ]
+    },
+    "code_review_validation": {
+      "name": "Review, test & validate code",
+      "description": "Self-audits, runs tests, and fixes what's broken",
+      "best_projects": [
+        "01-node-express-ecommerce",
+        "03-java-springboot-fintech",
+        "10-infra-iac-terraform"
+      ],
+      "demo_flows": [
+        "automated code review with git diff",
+        "security vulnerability scanning", 
+        "performance regression testing"
+      ]
+    },
+    "ui_validation": {
+      "name": "Validate visual and UI updates",
+      "description": "Amp checks, iterates, and screenshots its UI work",
+      "best_projects": [
+        "06-react-nextjs-ui",
+        "09-sveltekit-dashboard",
+        "13-mern-fullstack"
+      ],
+      "demo_flows": [
+        "storybook validation with screenshots",
+        "responsive design testing",
+        "accessibility compliance checks"
+      ]
+    },
+    "advanced_refactoring": {
+      "name": "Advanced problem solving & refactoring",
+      "description": "Leverage Amp for complex, high-effort tasks", 
+      "best_projects": [
+        "07-legacy-php-laravel-monolith",
+        "11-cpp-trading-sim",
+        "03-java-springboot-fintech"
+      ],
+      "demo_flows": [
+        "microservice extraction from monolith",
+        "cross-language code porting",
+        "architectural pattern migrations"
+      ]
+    },
+    "visual_troubleshooting": {
+      "name": "Screenshot-first troubleshooting",
+      "description": "Pasting screenshots is enough to get help",
+      "best_projects": [
+        "06-react-nextjs-ui",
+        "09-sveltekit-dashboard", 
+        "13-mern-fullstack"
+      ],
+      "demo_flows": [
+        "UI bug diagnosis from screenshot",
+        "error message analysis",
+        "layout/styling issue resolution"
+      ]
+    },
+    "logic_explanation": {
+      "name": "Explain logic & generate diagrams",
+      "description": "Make complex logic visual with Mermaid or other diagrams",
+      "best_projects": [
+        "02-python-fastapi-logistics",
+        "03-java-springboot-fintech",
+        "11-cpp-trading-sim"
+      ],
+      "demo_flows": [
+        "system architecture diagrams",
+        "data flow visualization", 
+        "algorithm explanation with flowcharts"
+      ]
+    },
+    "git_workflow": {
+      "name": "Use git staging area as a sandbox",
+      "description": "Manage code incrementally and cleanly", 
+      "best_projects": [
+        "01-node-express-ecommerce",
+        "02-python-fastapi-logistics",
+        "06-react-nextjs-ui"
+      ],
+      "demo_flows": [
+        "incremental feature development",
+        "experimental branch management",
+        "selective commit staging"
+      ]
+    },
+    "rapid_prototyping": {
+      "name": "Rapid prototyping without fear",
+      "description": "Build one version, throw it away, and learn fast",
+      "best_projects": [
+        "13-mern-fullstack",
+        "06-react-nextjs-ui",
+        "12-rust-axum-infra"
+      ],
+      "demo_flows": [
+        "MVP feature implementation",
+        "proof-of-concept development",
+        "alternative architecture exploration"
+      ]
+    },
+    "database_queries": {
+      "name": "Write SQL & explore databases", 
+      "description": "Ask questions; Amp does the querying",
+      "best_projects": [
+        "02-python-fastapi-logistics",
+        "03-java-springboot-fintech",
+        "01-node-express-ecommerce"
+      ],
+      "demo_flows": [
+        "complex analytics queries",
+        "database schema exploration",
+        "performance optimization queries"
+      ]
+    },
+    "thread_sharing": {
+      "name": "Share threads & outcomes",
+      "description": "Threads become collaborative documentation",
+      "best_projects": [
+        "01-node-express-ecommerce",
+        "02-python-fastapi-logistics",
+        "13-mern-fullstack"
+      ],
+      "demo_flows": [
+        "feature development documentation",
+        "knowledge transfer sessions",
+        "code review collaboration"
+      ]
+    },
+    "security_reviews": {
+      "name": "Security team workflows",
+      "description": "Fast security checks, code reviews, incident response",
+      "best_projects": [
+        "03-java-springboot-fintech",
+        "08-ruby-on-rails-auth-headers",
+        "10-infra-iac-terraform"
+      ],
+      "demo_flows": [
+        "security vulnerability assessment",
+        "authentication/authorization review",
+        "compliance policy validation"
+      ]
+    }
+  },
+  "audience_mapping": {
+    "executive": {
+      "focus": ["business_value", "roi", "productivity_gains"],
+      "recommended_duration": 15,
+      "emphasis": ["time_savings", "quality_improvements", "team_efficiency"]
+    },
+    "manager": {
+      "focus": ["team_productivity", "process_improvement", "risk_reduction"], 
+      "recommended_duration": 20,
+      "emphasis": ["workflow_automation", "knowledge_sharing", "faster_delivery"]
+    },
+    "senior_engineer": {
+      "focus": ["technical_depth", "architecture", "advanced_features"],
+      "recommended_duration": 30,
+      "emphasis": ["complex_problems", "refactoring", "system_design"]
+    },
+    "junior_engineer": {
+      "focus": ["learning", "guidance", "best_practices"],
+      "recommended_duration": 25,
+      "emphasis": ["onboarding", "code_explanation", "skill_development"]
+    },
+    "mixed": {
+      "focus": ["balanced_technical_business", "collaborative_features"],
+      "recommended_duration": 20,
+      "emphasis": ["accessibility", "team_collaboration", "practical_examples"]
+    }
+  }
+}

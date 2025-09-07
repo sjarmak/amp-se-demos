@@ -1,0 +1,285 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://amp-se-demos/config/customer_profile.schema.json",
+  "title": "Customer Profile Configuration",
+  "description": "JSON configuration to customize demo flows based on customer/prospect information",
+  "type": "object",
+  "required": ["company", "demo_context"],
+  "additionalProperties": false,
+  "properties": {
+    "company": {
+      "type": "object",
+      "description": "Company/Account information",
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Company name",
+          "example": "Acme Corp"
+        },
+        "industry": {
+          "type": "string",
+          "description": "Industry vertical",
+          "enum": [
+            "Technology", "Financial Services", "Healthcare", "E-commerce", 
+            "Manufacturing", "Media & Entertainment", "Transportation & Logistics",
+            "Government", "Education", "Real Estate", "Retail", "Other"
+          ]
+        },
+        "size": {
+          "type": "string",
+          "description": "Company size",
+          "enum": ["Startup (1-50)", "SMB (51-500)", "Mid-Market (501-5000)", "Enterprise (5000+)"]
+        },
+        "website": {
+          "type": "string",
+          "format": "uri",
+          "description": "Company website"
+        },
+        "country": {
+          "type": "string",
+          "description": "Primary business location"
+        },
+        "tech_stack": {
+          "type": "array",
+          "description": "Known technologies in use",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Node.js", "Python", "Java", "Go", "C++", "Rust", ".NET", "PHP", "Ruby",
+              "React", "Next.js", "SvelteKit", "Express", "FastAPI", "Spring Boot",
+              "Rails", "Laravel", "MongoDB", "PostgreSQL", "MySQL", "SQLite",
+              "AWS", "Azure", "GCP", "Docker", "Kubernetes", "Terraform"
+            ]
+          }
+        }
+      }
+    },
+    "contacts": {
+      "type": "array",
+      "description": "Key contacts at the company",
+      "items": {
+        "type": "object",
+        "required": ["name", "role"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Contact name"
+          },
+          "role": {
+            "type": "string",
+            "description": "Job title/role",
+            "examples": ["CTO", "VP Engineering", "Staff Engineer", "Security Lead"]
+          },
+          "department": {
+            "type": "string",
+            "enum": ["Engineering", "Security", "DevOps", "Product", "Data", "QA"]
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          }
+        }
+      }
+    },
+    "demo_context": {
+      "type": "object",
+      "description": "Context for demo customization",
+      "required": ["use_cases", "audience_level"],
+      "properties": {
+        "use_cases": {
+          "type": "array",
+          "description": "Primary use cases to demonstrate",
+          "minItems": 1,
+          "maxItems": 5,
+          "items": {
+            "type": "string",
+            "enum": [
+              "context_restoration",
+              "toil_reduction", 
+              "debugging_investigation",
+              "codebase_navigation",
+              "bug_fixing_features",
+              "feature_building",
+              "code_review_validation",
+              "ui_validation",
+              "advanced_refactoring",
+              "visual_troubleshooting",
+              "logic_explanation",
+              "git_workflow",
+              "rapid_prototyping",
+              "database_queries",
+              "thread_sharing",
+              "security_reviews"
+            ]
+          }
+        },
+        "audience_level": {
+          "type": "string",
+          "description": "Technical level of demo audience",
+          "enum": ["executive", "manager", "senior_engineer", "junior_engineer", "mixed"]
+        },
+        "demo_duration": {
+          "type": "integer",
+          "description": "Target demo duration in minutes",
+          "minimum": 5,
+          "maximum": 60,
+          "default": 20
+        },
+        "pain_points": {
+          "type": "array",
+          "description": "Specific challenges the customer faces",
+          "items": {
+            "type": "string",
+            "examples": [
+              "Context switching between projects",
+              "Large legacy codebase hard to navigate",
+              "Slow code reviews",
+              "Debugging production issues",
+              "Onboarding new developers",
+              "Technical debt accumulation",
+              "Testing coverage gaps"
+            ]
+          }
+        },
+        "success_metrics": {
+          "type": "array",
+          "description": "What success looks like for the customer",
+          "items": {
+            "type": "string",
+            "examples": [
+              "Faster feature delivery",
+              "Reduced bug resolution time",
+              "Improved code quality",
+              "Better developer experience",
+              "Faster onboarding",
+              "Reduced security vulnerabilities"
+            ]
+          }
+        }
+      }
+    },
+    "current_tools": {
+      "type": "object",
+      "description": "Tools currently in use",
+      "properties": {
+        "ide": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["VS Code", "IntelliJ", "WebStorm", "Vim", "Emacs", "Sublime"]
+          }
+        },
+        "version_control": {
+          "type": "string",
+          "enum": ["GitHub", "GitLab", "Bitbucket", "Azure DevOps"]
+        },
+        "ci_cd": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["GitHub Actions", "GitLab CI", "Jenkins", "CircleCI", "TeamCity"]
+          }
+        },
+        "monitoring": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["DataDog", "New Relic", "Splunk", "Prometheus", "Grafana"]
+          }
+        },
+        "communication": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["Slack", "Teams", "Discord", "Notion", "Confluence"]
+          }
+        }
+      }
+    },
+    "recent_projects": {
+      "type": "array",
+      "description": "Recent or upcoming development projects",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Project name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Brief project description"
+          },
+          "stage": {
+            "type": "string",
+            "enum": ["planning", "development", "testing", "deployment", "maintenance"]
+          },
+          "tech_stack": {
+            "type": "array",
+            "items": {"type": "string"}
+          }
+        }
+      }
+    },
+    "security_requirements": {
+      "type": "object",
+      "description": "Security-related requirements and constraints",
+      "properties": {
+        "compliance": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["SOC2", "GDPR", "HIPAA", "PCI-DSS", "ISO27001"]
+          }
+        },
+        "security_tools": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "examples": ["Snyk", "Veracode", "SonarQube", "SAST", "DAST"]
+          }
+        },
+        "access_patterns": {
+          "type": "string",
+          "enum": ["on-premise", "cloud", "hybrid", "air-gapped"]
+        }
+      }
+    },
+    "preferences": {
+      "type": "object",
+      "description": "Demo customization preferences",
+      "properties": {
+        "show_diagnostics": {
+          "type": "boolean",
+          "description": "Show detailed technical diagnostics",
+          "default": true
+        },
+        "include_security_scenarios": {
+          "type": "boolean",
+          "description": "Include security-focused scenarios",
+          "default": false
+        },
+        "emphasize_collaboration": {
+          "type": "boolean", 
+          "description": "Focus on team collaboration features",
+          "default": true
+        },
+        "show_enterprise_features": {
+          "type": "boolean",
+          "description": "Highlight enterprise-specific capabilities",
+          "default": false
+        }
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this profile was created"
+    },
+    "created_by": {
+      "type": "string",
+      "description": "Who created this profile"
+    }
+  }
+}

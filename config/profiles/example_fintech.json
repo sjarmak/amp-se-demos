@@ -1,0 +1,72 @@
+{
+  "company": {
+    "name": "PayFlow Technologies",
+    "industry": "Financial Services",
+    "size": "Mid-Market (501-5000)",
+    "website": "https://payflow.tech",
+    "country": "United States",
+    "tech_stack": ["Java", "Spring Boot", "PostgreSQL", "AWS", "Docker"]
+  },
+  "contacts": [
+    {
+      "name": "Sarah Chen",
+      "role": "VP of Engineering", 
+      "department": "Engineering",
+      "email": "s.chen@payflow.tech"
+    },
+    {
+      "name": "Marcus Rodriguez",
+      "role": "Staff Security Engineer",
+      "department": "Security",
+      "email": "m.rodriguez@payflow.tech"
+    }
+  ],
+  "demo_context": {
+    "use_cases": [
+      "security_reviews",
+      "debugging_investigation", 
+      "code_review_validation",
+      "context_restoration"
+    ],
+    "audience_level": "senior_engineer",
+    "demo_duration": 25,
+    "pain_points": [
+      "Debugging production issues in complex financial workflows",
+      "Security code reviews take too long",
+      "Hard to trace money flow through microservices"
+    ],
+    "success_metrics": [
+      "Faster security vulnerability remediation",
+      "Reduced mean time to resolution for financial discrepancies",
+      "Improved compliance audit performance"
+    ]
+  },
+  "current_tools": {
+    "ide": ["IntelliJ", "VS Code"],
+    "version_control": "GitHub",
+    "ci_cd": ["GitHub Actions"],
+    "monitoring": ["DataDog", "New Relic"],
+    "communication": ["Slack"]
+  },
+  "recent_projects": [
+    {
+      "name": "Transaction Processing Optimization",
+      "description": "Improving performance of high-frequency transaction processing system",
+      "stage": "development", 
+      "tech_stack": ["Java", "Spring Boot", "PostgreSQL"]
+    }
+  ],
+  "security_requirements": {
+    "compliance": ["PCI-DSS", "SOC2"],
+    "security_tools": ["Snyk", "SonarQube"],
+    "access_patterns": "cloud"
+  },
+  "preferences": {
+    "show_diagnostics": true,
+    "include_security_scenarios": true,
+    "emphasize_collaboration": true,
+    "show_enterprise_features": true
+  },
+  "created_at": "2025-01-06T20:00:00Z",
+  "created_by": "sales-engineer@amp.com"
+}

@@ -1,0 +1,72 @@
+{
+  "company": {
+    "name": "BuildFast AI",
+    "industry": "Technology", 
+    "size": "Startup (1-50)",
+    "website": "https://buildfast.ai",
+    "country": "United States",
+    "tech_stack": ["Python", "FastAPI", "React", "PostgreSQL", "AWS"]
+  },
+  "contacts": [
+    {
+      "name": "Alex Kim",
+      "role": "CTO",
+      "department": "Engineering", 
+      "email": "alex@buildfast.ai"
+    },
+    {
+      "name": "Jordan Liu", 
+      "role": "Full Stack Engineer",
+      "department": "Engineering",
+      "email": "jordan@buildfast.ai"
+    }
+  ],
+  "demo_context": {
+    "use_cases": [
+      "rapid_prototyping",
+      "feature_building",
+      "toil_reduction",
+      "git_workflow"
+    ],
+    "audience_level": "mixed",
+    "demo_duration": 15,
+    "pain_points": [
+      "Need to move fast but maintain code quality",
+      "Small team juggling multiple features",
+      "Context switching between frontend and backend"
+    ],
+    "success_metrics": [
+      "Faster feature delivery", 
+      "Reduced development cycle time",
+      "Better code consistency across team"
+    ]
+  },
+  "current_tools": {
+    "ide": ["VS Code"],
+    "version_control": "GitHub", 
+    "ci_cd": ["GitHub Actions"],
+    "monitoring": ["DataDog"],
+    "communication": ["Discord", "Notion"]
+  },
+  "recent_projects": [
+    {
+      "name": "AI Model Serving Platform",
+      "description": "Building platform to serve ML models at scale",
+      "stage": "development",
+      "tech_stack": ["Python", "FastAPI", "Docker", "Kubernetes"]
+    }
+  ],
+  "security_requirements": {
+    "compliance": [],
+    "security_tools": ["Snyk"],
+    "access_patterns": "cloud"
+  },
+  "preferences": {
+    "show_diagnostics": false,
+    "include_security_scenarios": false,
+    "emphasize_collaboration": true,
+    "show_enterprise_features": false
+  },
+  "created_at": "2025-01-06T20:00:00Z",
+  "created_by": "sales-engineer@amp.com"
+}
