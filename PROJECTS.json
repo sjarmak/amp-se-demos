@@ -3,19 +3,19 @@
     "id": "01-node-express-ecommerce",
     "stack": ["Node", "Express", "Jest", "Postgres"],
     "datasets": ["ecommerce/products.csv", "ecommerce/orders.csv", "ecommerce/users.csv"],
-    "capabilities": ["unit-tests", "diagramming", "code-explanations", "toolbox", "alloy-mode", "large-context", "end-to-end"],
+    "capabilities": ["unit-tests", "diagramming", "code-explanations", "toolbox", "large-context", "end-to-end"],
     "use_case_mapping": ["toil_reduction", "feature_building", "code_review_validation", "codebase_navigation"],
     "demo_flows": [
       {"name": "Quick Win: Auto-tests for cart service", "duration_min": 7},
       {"name": "Core: Throttle to 200ms + tests + PR", "duration_min": 18},
-      {"name": "Deep: Refactor checkout + diagrams + alloy mode", "duration_min": 30}
+      {"name": "Deep: Refactor checkout + diagrams", "duration_min": 30}
     ]
   },
   {
     "id": "02-python-fastapi-logistics",
     "stack": ["Python", "FastAPI", "PyTest", "SQLAlchemy", "Postgres"],
     "datasets": ["logistics/shipments.csv", "logistics/routes.csv", "logistics/carriers.csv"],
-    "capabilities": ["unit-tests", "diagramming", "toolbox", "large-context", "end-to-end", "alloy-mode"],
+    "capabilities": ["unit-tests", "diagramming", "toolbox", "large-context", "end-to-end"],
     "use_case_mapping": ["debugging_investigation", "advanced_refactoring", "database_queries", "logic_explanation"],
     "demo_flows": [
       {"name": "Quick Win: Create tests for rate limiter", "duration_min": 6},
@@ -27,7 +27,7 @@
     "id": "03-java-springboot-fintech",
     "stack": ["Java", "Spring Boot", "JUnit", "Liquibase", "Postgres"],
     "datasets": ["fintech/transactions.csv", "fintech/accounts.csv", "fintech/customers.csv"],
-    "capabilities": ["unit-tests", "diagramming", "toolbox", "large-context", "end-to-end", "alloy-mode"],
+    "capabilities": ["unit-tests", "diagramming", "toolbox", "large-context", "end-to-end"],
     "use_case_mapping": ["security_reviews", "advanced_refactoring", "code_review_validation", "debugging_investigation"],
     "demo_flows": [
       {"name": "Quick Win: Service tests for fee calc", "duration_min": 8},

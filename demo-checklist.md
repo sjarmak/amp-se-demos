@@ -60,7 +60,7 @@ For each project:
 ## Master mapping
 
 - [ ] `MASTER_DEMOS.md` table maps discovery situations to project, flow, talk track, value proof
-- [ ] Include entries for unit tests gap, legacy decomposition, auth headers search, 200 ms throttle, alloy mode compare, UI iteration with screenshots
+- [ ] Include entries for unit tests gap, legacy decomposition, auth headers search, 200 ms throttle, UI iteration with screenshots
 
 ## AGENTS.md standards
 

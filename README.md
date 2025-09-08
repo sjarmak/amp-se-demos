@@ -6,7 +6,7 @@ A curated set of realistic demo projects to showcase Amp across common enterpris
 - Choose a demo: see MASTER_DEMOS.md
 - Run projects: each project has scripts/dev.sh, scripts/test.sh, scripts/lint.sh, scripts/ci.sh
 - Enable tools: see AMP_TOOLBOX/README.md
-- Alloy modes and large-context tips: see AGENTS.md
+- Large-context tips: see AGENTS.md
 - JetBrains usage: JETBRAINS.md
 
 ## Quick start

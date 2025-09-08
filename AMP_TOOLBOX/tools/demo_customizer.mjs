@@ -90,7 +90,7 @@ function selectBestProjects(profile, mapping, projects) {
     // Audience level appropriateness
     const audiencePreferences = mapping.audience_mapping[audienceLevel];
     if (audienceLevel === 'executive' && project.capabilities.includes('end-to-end')) score += 8;
-    if (audienceLevel === 'senior_engineer' && project.capabilities.includes('alloy-mode')) score += 8;
+    
     if (audienceLevel === 'junior_engineer' && project.capabilities.includes('diagramming')) score += 6;
     
     // Demo flow duration alignment

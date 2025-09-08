@@ -12,7 +12,7 @@ This repo is optimized for Amp-driven workflows. Follow these standards to ensur
 - Cleanup: Reset any test DB state in setup/teardown; no background processes in scripts
 - Diagrams: Generate PlantUML/Mermaid into docs/ and reference in PRs
 - Large context: Use file lists and outline prompts; prefer code-linked references
-- Alloy mode: Use plan/implement split; specify roles for models; compare latency/cost in PR
+
 - JetBrains: Use run configs per project; see JETBRAINS.md
 - .NET specifics: Target net8.0; nullable enabled; async naming with Async suffix; DI via minimal APIs or Program.cs; use EF Core Migrations; avoid static state in tests
 

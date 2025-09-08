@@ -20,12 +20,12 @@ Flow name: Core: Throttle requests to every 200ms
   - ./scripts/test.sh
 - Acceptance: green tests, docs/throttle-sequence.puml created, no lint errors.
 
-Flow name: Deep: Refactor checkout + diagrams + alloy mode
+Flow name: Deep: Refactor checkout + diagrams
 - Goals: Refactor routes/checkout.js to isolate payment adapter with interface; add integration test hitting DB; generate C4 diagram in docs/
 - Amp prompts:
   - "Refactor src/routes/checkout.js to delegate to src/services/paymentAdapter.js with interface check. Maintain behavior."
   - "Add integration test hitting orders table (seeded)."
   - "Generate C4 overview in docs/c4-overview.puml and class diagram in docs/class-diagram.puml."
-  - "Use Alloy Mode: one model plans, another implements; compare latency/cost in PR."
+  
 - Commands: ./scripts/test.sh
 - Acceptance: tests pass; diagrams produced; PR text generated.
